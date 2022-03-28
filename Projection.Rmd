@@ -32,3 +32,13 @@ subset2  %>%
   map(., ~{Reduce( "%*%", .)})
 
 ```
+
+
+```{r}
+popbio::lambda(t(subset1$C2_conv$fecundity_2019)) #lambda of transposed matrix
+
+popbio::lambda(subset2$C2_conv$fecundity_2018)
+
+subset1$C2_conv$fecundity_2019
+```
+
