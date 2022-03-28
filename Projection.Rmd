@@ -1,0 +1,34 @@
+---
+title: "Projection"
+output: html_document
+---
+
+```{r, include=FALSE}
+library(popbio)
+library(tidyverse)
+```
+
+
+
+```{r subsets}
+## Subset 1: 2019 fecundity rate
+subset1 <-  readRDS("subset1.RData")
+
+## Subset 2: 2018 fecundity rate
+subset2 <-  readRDS("subset2.RData")
+```
+
+Current issue: subset 1 and 2 returned the same grand projection matrix
+
+```{r projection-1}
+subset1  %>%
+  map(., ~{Reduce( "%*%", .)})
+
+```
+
+
+```{r projection-2}
+subset2  %>%
+  map(., ~{Reduce( "%*%", .)})
+
+```
