@@ -56,34 +56,3 @@ ev_2 <- eigen(subset1$C2_conv$fecundity_2018)
 Re(ev_2$values[1])
 ```
 
-```{r hand-var-lambda}
-
-v <- matrix(0, nrow=9, ncol=9)
-
-v
-
-## where did the values in v come from?
-v[2,2] <- 0.0036
-
-# 6th row/col is a32
-v[6,6] <- 0.0032
-
-# 4th row/col is a12 = fecundity
-v[4,4] <- 0.27
-
-# 7th row/col is a13, also = fecundity
-v[7,7] <- 0.27
-
-# the two fecundities have correl=1, so cov = 0.27
-# that's a correlation between the 4'th and 7'th values
-v[7,4] <- v[4,7] <- 0.27
-
-
-a <- rbind(c(0, 2.6, 2.6), c(0.2, 0, 0), c(0, 0.57, 0))
-
-ev <- eigen(a)
-
-Re(ev$vectors[,1])
-v <- Re(ev$vectors[,1])
-v/sum(v)
-```
