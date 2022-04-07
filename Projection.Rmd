@@ -23,13 +23,21 @@ subset2 <-  readRDS("subset2.RData")
 Current issue: subset 1 and 2 returned the same grand projection matrix
 
 ```{r projection-1}
+## phase-wise projection
 subset1  %>%
   map(., ~{Reduce( "%*%", .)})
 
+
+## remove nesting factor in subset 1 for cyclical permutation 
+subset1_phase_all <- subset1 %>% unlist( recursive = FALSE)
+period_sequence <- names(subset1_phase_all) # dimension name in the way
+
+subset1 %>% unlist( recursive = FALSE)
 ```
 
 
 ```{r projection-2}
+## phase-wise projection
 subset2  %>%
   map(., ~{Reduce( "%*%", .)})
 
